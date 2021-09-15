@@ -1,0 +1,30 @@
+import mysql.connector as sql seats=[1,2,3,4,5,6,7,8,9,10] 
+conn = sql.connect(host='localhost',user='root',password='',database='planesystem') 
+if conn.is_connected(): 
+  print("Succesfully connected") 
+else: 
+  print("Connection error")
+
+def listSeats(): 
+  seats[False] for i in seats: 
+  print(i,end="\t") menu()
+
+def book_Seat(k): 
+  if k in seats: 
+    #seats[k]=True print("Seat booked no:",k) 
+    seats.remove(k) 
+  elif k not in seats and k<=len(seats): 
+    print("seat already booked") 
+  else: 
+    print("Seat out of range:") 
+    listSeats() 
+    menu() 
+ def cancel_Seat(): 
+ k = int(input("Enter seat to cancel:")) 
+ if k not in seats and k<=len(seats): 
+  seats.append(k) seats.sort() listSeats() 
+  else: 
+    print("cant cancel")
+
+def menu(): 
+print("\nwelcome to my reservation system\n1:check available seats\n2:Book seat\n3:Cancel seat\n4:Exit") key = input("Enter choice: ") if key=='1': print("available seats are:",listSeats()) elif key=='2': inp=int(input("Enter seat to book:")) print("seat booked:", book_Seat(inp)) elif key=='3': cancel_Seat() else: print("thank you") exit()
